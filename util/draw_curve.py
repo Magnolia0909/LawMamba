@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Time : 2023/9/18 下午4:26
-# @Author : Xiuxuan Shen
 
 import matplotlib.pyplot as plt
 from datetime import datetime
