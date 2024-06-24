@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Time : 2023/10/30 上午11:32
-# @Author : Xiuxuan Shen
 
 import pandas as pd
 from .te_tokenizer import Tokenizer
