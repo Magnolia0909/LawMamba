@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Time : 2023/9/1 下午1:03
-# @Author : Xiuxuan Shen
 import json
 
 
