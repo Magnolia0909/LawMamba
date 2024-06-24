@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time : 2023/9/1 下午3:11
-# @Author : Xiuxuan Shen
+
 import jieba
 import jieba.analyse
 import torch
