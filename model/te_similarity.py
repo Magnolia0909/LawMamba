@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time : 6/7/24 9:15 PM
-# @Author : Xiuxuan Shen
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
