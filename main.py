@@ -35,34 +35,25 @@ def parse_agrs():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--data_dir', type=str, default='/home/sxx/experiment/data/law_data/law.jsonl', help='判定要素一致性的数据集')
-    parser.add_argument('--stopword_path', type=str, default='/home/sxx/experiment/data/law_data/stopword.txt', help='停用词')
+    parser.add_argument('--data_dir', type=str, default='/data/law_data/law.jsonl', help='判定要素一致性的数据集')
+    parser.add_argument('--stopword_path', type=str, default='/data/law_data/stopword.txt', help='停用词')
     parser.add_argument('--output_dir', type=str, default='result/', help='存放要素一致性判定结果')
 
-    parser.add_argument('--check_law_file_path', type=str, default='/home/sxx/experiment/data/law_data/civil.json', help='存放法律条文的数据集')
-    parser.add_argument('--check_contract_file_path', type=str, default='/homte_0608.loge/sxx/experiment/data/law_data/contract.json', help='存放合同条款的数据集')
+    parser.add_argument('--check_law_file_path', type=str, default='/data/law_data/civil.json', help='存放法律条文的数据集')
+    parser.add_argument('--check_contract_file_path', type=str, default='/data/law_data/contract.json', help='存放合同条款的数据集')
     parser.add_argument('--num_labels', type=str, default=16, help='法律分类数量')
-    parser.add_argument('--model_choice', type=str, default='lstm', choices=['kan', 'transformer', 'rnn', 'bert', 'mamba', 'gpt'], help='使用的模型')
-    parser.add_argument('--is_multi', type=bool, default=False, help='是否启动多任务')
-    parser.add_argument('--multi_tasks', type=int, default=2, help='多任务个数')
-    parser.add_argument('--multi_begin', type=int, default=10, help='多任务启动轮次')
+    parser.add_argument('--model_choice', type=str, default='lstm', choices=['transformer', 'rnn', 'bert', 'mamba', 'gpt'], help='使用的模型')
     parser.add_argument('--residual_weight', default=0.8, type=float, help='the weight of residual operation for pooling')
 
-    parser.add_argument('--te_train_data', type=str, default='/home/sxx/experiment/data/law_data/train_json_v3.json', help='要素一致性排名训练集')
-    parser.add_argument('--te_test_data', type=str, default='/home/sxx/experiment/data/law_data/test_json_v3.json', help='要素一致性排名测试集')
-    parser.add_argument('--te_vocab_file', type=str, default='/home/sxx/experiment/data/law_data/te/vocab.txt', help='要素一致性排名测试集')
-    parser.add_argument('--law_data', type=str, default='/home/sxx/experiment/data/law_data/law.csv', help='存放法律的数据集')
+    parser.add_argument('--te_train_data', type=str, default='/data/law_data/train_json_v3.json', help='要素一致性排名训练集')
+    parser.add_argument('--te_test_data', type=str, default='/data/law_data/test_json_v3.json', help='要素一致性排名测试集')
+    parser.add_argument('--te_vocab_file', type=str, default='/data/law_data/te/vocab.txt', help='要素一致性排名测试集')
+    parser.add_argument('--law_data', type=str, default='/data/law_data/law.csv', help='存放法律的数据集')
 
     parser.add_argument('--t_d_model', type=int, default=384, help='Dimension of the model')
     parser.add_argument('--t_hidden', type=int, default=256, help='Dimension of inner layers')
     parser.add_argument('--t_num_layers', type=int, default=6, help='Number of layers')
     parser.add_argument('--t_n_head', type=int, default=8, help='Number of head')
-
-    parser.add_argument('--kan_n_embd', type=int, default=512, help='Number of head')
-    parser.add_argument('--kan_n_head', type=int, default=8, help='Number of head')
-    parser.add_argument('--kan_attn_pdrop', type=int, default=0.1, help='Number of head')
-    parser.add_argument('--kan_resid_pdrop', type=int, default=0.1, help='Number of head')
-    parser.add_argument('--kan_block_size', type=int, default=128, help='Number of head')
 
     parser.add_argument('--clip_context_length', type=int, default=128, help='Dimension of the model')
     parser.add_argument('--clip_transformer_width', type=int, default=512, help='Dimension of inner layers')
@@ -73,7 +64,6 @@ def parse_agrs():
     parser.add_argument("--private", type=str2bool, nargs='?', const=True, default=False, help='If privatization should be applied during pre-training')
     parser.add_argument("--no_clipping", type=str2bool, nargs='?', const=True, default=False, help='Whether or not to clip encoder hidden states in the non-private setting.')
     parser.add_argument("--epsilon", type=float, default=1.0, help='value of epsilon')
-
 
     parser.add_argument('--gpt2_dim', type=int, default=768, help='gpt2')
     parser.add_argument('--example_num', type=int, default=3, help='一条合同对应的法律数量')
@@ -113,10 +103,7 @@ def parse_agrs():
     parser.add_argument('--monitor_mode', type=str, default='max', choices=['min', 'max'], help='whether to max or min the metric.')
     parser.add_argument('--early_stop', type=int, default=50, help='the patience of training.')
     parser.add_argument('--resume', type=str, default=None,  help='whether to resume the training from existing checkpoints.')
-    # parser.add_argument('--resume', type=str, default="/home/sxx/experiment/law/law_consistence/result/dp/current_checkpoint.pth",  help='whether to resume the training from existing checkpoints.')
-
-    parser.add_argument('--seed', type=int, default=1111, help='固定随机种子')
-    # parser.add_argument('--seed', type=int, default=42, help='固定随机种子')
+    # parser.add_argument('--resume', type=str, default="/result/dp/current_checkpoint.pth",  help='whether to resume the training from existing checkpoints.')
 
     parser.add_argument('--monitor_metric', type=str, default='BLEU_4', help='the metric to be monitored.')
     # Optimization
@@ -169,23 +156,6 @@ def main():
     np.random.seed(args.seed)
 
     law_data = extract_law(args)
-    '''
-    差分隐私重写器
-    '''
-    # dp_tokenizer = Tokenizer(args)
-    # dp_train_dataloader = DPDataLoader(args, dp_tokenizer, split='train', shuffle=True)
-    # dp_test_dataloader = DPDataLoader(args, dp_tokenizer, split='test', shuffle=False)
-    #
-    # dp_model = DPGenerateModel(args, dp_tokenizer)
-    # dp_criterion = compute_loss
-    # dp_metrics = compute_scores
-    # dp_optimizer = build_optimizer(args, dp_model)
-    # dp_lr_scheduler = build_lr_scheduler(args, dp_optimizer)
-    #
-    # # build trainer and start to train
-    # dp_trainer = Trainer(dp_model, dp_criterion, dp_metrics, dp_optimizer, args, dp_lr_scheduler, dp_train_dataloader, dp_test_dataloader)
-    # dp_trainer.train()
-
     '''
     文本蕴含任务训练器
     '''
