@@ -6,31 +6,6 @@ from text_entailment.te_extract_law import extract_law
 from text_entailment.te_dataloader import TeDataLoader
 from text_entailment.te_trainer import Te_Trainer
 
-import os
-os.environ['CUDA_VISIBLE_DEVICES'] = "0"
-# from check.ch_dataload import ChDataLoader
-# from check.ch_dataset import ChDataset
-# from check.ch_trainer import Ch_Trainer
-#
-# from text_entailment.te_tokenizer import Tokenizer
-# from dp.dp_dataloader import DPDataLoader
-# from dp.metrics import compute_scores
-# from dp.optimizers import build_optimizer, build_lr_scheduler
-# from dp.dp_trainer import Trainer
-# from dp.loss import compute_loss
-# from dp.dp_generate import DPGenerateModel
-
-
-def str2bool(val):
-    if isinstance(val, bool):
-        return val
-    if val.lower() in ('yes', 'true', 't', 'y', '1'):
-        return True
-    elif val.lower() in ('no', 'false', 'f', 'n', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Expected boolean value.')
-
 def parse_agrs():
 
     parser = argparse.ArgumentParser()
@@ -77,7 +52,6 @@ def parse_agrs():
     parser.add_argument('--precomp_enc_type', default="basic", help='basic|weight_norm')
     parser.add_argument('--no_imgnorm', action='store_true', help='Do not normalize the image embeddings.')
     parser.add_argument('--word_dim', default=256, type=int, help='Dimensionality of the word embedding.')
-    # parser.add_argument('--num_layers', default=1, type=int, help='Number of GRU layers.')
     parser.add_argument('--bi_gru', default=True, action='store_true', help='Use bidirectional GRU.')
     parser.add_argument('--no_txtnorm', action='store_true', help='Do not normalize the text embeddings.')
     parser.add_argument('--vocab_size', default=4354, type=int, help='词汇表长度')
@@ -163,14 +137,6 @@ def main():
     te_test_loader = TeDataLoader(args, law_data, split='test', shuffle=False)
     te_trainer = Te_Trainer(args, te_train_loader, te_test_loader, law_data)
     te_trainer.train()
-
-    '''
-    一致性校验训练器
-    '''
-    # ch_train_loader = ChDataLoader(args, tokenizer, split="train", shuffle=True)
-    # ch_test_loader = ChDataLoader(args, tokenizer, split="test", shuffle=True)
-    # ch_trainer = Ch_Trainer(args, tokenizer, ch_train_loader, ch_test_loader)
-    # ch_trainer.train()
 
 if __name__ == "__main__":
     main()
