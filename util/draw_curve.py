@@ -15,7 +15,7 @@ epochs = []
 losses = []
 
 # 打开文件并逐行读取
-with open('/home/sxx/experiment/law/law_consistence/records/log/te/te_0304.log', 'r') as file:
+with open('/records/log/te/te_0304.log', 'r') as file:
     for line in file:
         # 解析每一行为字典
         log_entry = eval(line.strip())  # 使用eval来解析字典，假设文件中的每行都是有效的字典表示
@@ -37,5 +37,5 @@ plt.ylabel('Loss')
 plt.title('Loss Curve')
 plt.grid(True)
 
-plt.savefig('/home/sxx/experiment/law/law_consistence/records/curve/'+'train_loss_curve_'+str(current_month)+str(current_day)+'.png')
+plt.savefig('/records/curve/'+'train_loss_curve_'+str(current_month)+str(current_day)+'.png')
 plt.show()
