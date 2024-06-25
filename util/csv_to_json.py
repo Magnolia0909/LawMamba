@@ -32,14 +32,14 @@ def csv_to_json(csv_filename, json_filename):
 '''
   测试集
 '''
-# csv_filename = '/home/sxx/experiment/data/law_data/te/test.csv'
-# json_filename = '/home/sxx/experiment/data/law_data/te/test.json'
+# csv_filename = '/data/law_data/te/test.csv'
+# json_filename = '/data/law_data/te/test.json'
 
 '''
   训练集
 '''
-csv_filename = '/home/sxx/experiment/data/law_data/te/mydata.csv'
-json_filename = '/home/sxx/experiment/data/law_data/te/train.json'
+csv_filename = '/data/law_data/te/mydata.csv'
+json_filename = '/data/law_data/te/train.json'
 
 # 调用函数进行转换
 csv_to_json(csv_filename, json_filename)
