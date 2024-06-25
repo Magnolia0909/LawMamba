@@ -18,8 +18,8 @@ def txt_to_json(txt_filename, json_filename):
     with open(json_filename, 'w', encoding='utf-8') as json_file:
         json.dump(data_list, json_file, ensure_ascii=False, indent=4)
 
-txt_filename = '/home/sxx/experiment/data/law_data/CSTS/Chinese-STS-B/sts-b-test.txt'
-json_filename = '/home/sxx/experiment/data/law_data/te/test.json'
+txt_filename = '/data/law_data/CSTS/Chinese-STS-B/sts-b-test.txt'
+json_filename = '/data/law_data/te/test.json'
 
 txt_to_json(txt_filename, json_filename)
 
