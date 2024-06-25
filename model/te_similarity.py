@@ -81,7 +81,7 @@ class ContractToLaw(nn.Module):
             weiLaw, attn = self.simi_attn(contracts, law_i_expand)
             #
             # if self.is_show:
-            #     save_path = "/home/sxx/experiment/law/law_consistence/records/attention_weights.txt"
+            #     save_path = "/records/attention_weights.txt"
             #     # 将注意力权重保存到文件
             #     contract_attention_weights = attn_show.mean(axis=1)  # 平均每一列的权重
             #     legal_attention_weights = attn_show.mean(axis=0)
