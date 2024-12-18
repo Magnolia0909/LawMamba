@@ -16,13 +16,13 @@ def parse_agrs():
 
     parser.add_argument('--check_law_file_path', type=str, default='/data/law_data/civil.json', help='存放法律条文的数据集')
     parser.add_argument('--check_contract_file_path', type=str, default='/data/law_data/contract.json', help='存放合同条款的数据集')
-    parser.add_argument('--num_labels', type=str, default=16, help='法律分类数量')
-    parser.add_argument('--model_choice', type=str, default='lstm', choices=['transformer', 'rnn', 'bert', 'mamba', 'gpt'], help='使用的模型')
+    parser.add_argument('--num_labels', type=str, default=15, help='法律分类数量')
+    parser.add_argument('--model_choice', type=str, default='lstm', choices=['mamba'], help='使用的模型')
     parser.add_argument('--residual_weight', default=0.8, type=float, help='the weight of residual operation for pooling')
 
-    parser.add_argument('--te_train_data', type=str, default='/data/law_data/train_json_v3.json', help='要素一致性排名训练集')
-    parser.add_argument('--te_test_data', type=str, default='/data/law_data/test_json_v3.json', help='要素一致性排名测试集')
-    parser.add_argument('--te_vocab_file', type=str, default='/data/law_data/te/vocab.txt', help='要素一致性排名测试集')
+    parser.add_argument('--te_train_data', type=str, default='/data/law_data/train_json.json', help='一致性排名训练集')
+    parser.add_argument('--te_test_data', type=str, default='/data/law_data/test_json.json', help='一致性排名测试集')
+    parser.add_argument('--te_vocab_file', type=str, default='/data/law_data/te/vocab.txt', help='一致性排名测试集')
     parser.add_argument('--law_data', type=str, default='/data/law_data/law.csv', help='存放法律的数据集')
 
     parser.add_argument('--t_d_model', type=int, default=384, help='Dimension of the model')
