@@ -1,2 +1,2 @@
-# LawMamba
-The code of LegalMamba
+# Provbench
+The code of Provbench
